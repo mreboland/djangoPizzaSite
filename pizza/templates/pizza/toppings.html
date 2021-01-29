@@ -1,0 +1,21 @@
+{% extends "pizza/base.html" %}
+
+{% block content %}
+
+    <p>Pizza: {{ pizza }}</p>
+
+    <p>Toppings:</p>
+    <ul>
+    {% for topping in toppings %}
+        <li>
+            <p>{{ topping.dateAdded|date:"M d, Y H:i" }}</p>
+            {% comment %} .name comes from the models.py, it was text in the lesson {% endcomment %}
+            <p>{{ topping.name|linebreaks }}</p>
+        </li>
+
+    {% empty %}
+        <li>There are no entries for this topic yet</li>
+    {% endfor %}
+    </ul>
+
+{% endblock content %}
